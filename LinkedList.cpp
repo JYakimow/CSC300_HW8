@@ -30,6 +30,23 @@ void LinkedList::addEnd(int value)
     this->count++;
 }
 
+void LinkedList::addFront(int value)
+{
+    Node* n = new Node(value);
+    if(head == NULL)
+    {
+        //we have the empty list
+        this->head = n;
+        this->tail = n;
+    }
+    else
+    {
+        n->setNextNode(this->head);
+        this->head = n;
+    }
+    this->count++;
+}
+
 int LinkedList::removeEnd()
 {
     if(this->count > 0)
@@ -51,6 +68,31 @@ int LinkedList::removeEnd()
             }
             this->tail = currNode;
             this->tail->setNextNode(NULL);
+        }
+        this->count--;
+        delete(n); //if we didn't do this, we technically have a memory leak
+        return value;
+    }
+    
+}
+int LinkedList::removeFront()
+{
+    if(this->count > 0)
+    {
+        Node* n = this->head;
+        int value = n->getPayload();
+        if(this->count == 1)
+        {
+            this->head = NULL;
+            this->tail = NULL;
+            
+        }
+        else
+        {
+            Node* currNode = this->head;
+
+            this->head = currNode->getNextNode();
+            currNode->setNextNode(NULL);
         }
         this->count--;
         delete(n); //if we didn't do this, we technically have a memory leak

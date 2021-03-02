@@ -11,5 +11,7 @@ class LinkedList
         LinkedList();
         void display();
         void addEnd(int value);
+        void addFront(int value);
         int removeEnd();
+        int removeFront();
 };

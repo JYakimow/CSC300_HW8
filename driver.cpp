@@ -18,11 +18,13 @@ int main(int argc, char** argv)
     ll->addEnd(4);
     ll->addEnd(6);
     ll->addEnd(8);
+    ll->addFront(5);
     ll->addEnd(2);
     ll->display();
-    int value = ll->removeEnd();
+    //int value = ll->removeEnd();
+    ll->removeFront();
     ll->display();
-    cout << value << endl;
+    //cout << value << endl;
     return 0;
 }
 
